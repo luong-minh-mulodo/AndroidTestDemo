@@ -39,11 +39,11 @@
         </developer>
     </developers>
 
-    <modules>
+<!--     <modules>
         <module>AAA</module>
-<!--         <module>TestTravisRobotium</module> -->
+        <module>TestTravisRobotium</module>
     </modules>
-
+ -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <android.version>4.1.1.4</android.version>
