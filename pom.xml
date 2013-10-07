@@ -40,8 +40,8 @@
     </developers>
 
     <modules>
-        <module>TravisRobotium</module>
-        <module>TestTravisRobotium</module>
+        <module>AAA</module>
+<!--         <module>TestTravisRobotium</module> -->
     </modules>
 
     <properties>
