@@ -1,76 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.leviwilson.android</groupId>
-  <artifactId>android-travis-ci-example</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>apk</packaging>
-  <name>android-travis-ci-example</name>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <properties>
-    <platform.version> 2.3.3
-    </platform.version>
-  </properties>
+    <version>1.0</version>
+    <groupId>com.cmput301.recipebot</groupId>
+    <artifactId>com-cmput301-recipebot-parent</artifactId>
+    <name>RecipeBot parent</name>
+    <packaging>pom</packaging>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android</artifactId>
-      <version>${platform.version}</version>
-      <scope>provided</scope>
-    </dependency>
+    <issueManagement>
+        <url>https://github.com.cmput301.recipebot/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
 
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-core</artifactId>
-      <version>1.2</version>
-      <scope>provided</scope>
-    </dependency>
+    <licenses>
+        <license>
+            <name>Apache License Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
+    <scm>
+        <url>https://github.com.cmput301.recipebot</url>
+        <connection>scm:git:git://github.com.cmput301.recipebot.git</connection>
+        <developerConnection>scm:git:git@github.com.cmput301.recipebot.git</developerConnection>
+    </scm>
 
-    <dependency>
-      <groupId>com.pivotallabs</groupId>
-      <artifactId>robolectric</artifactId>
-      <version>1.1</version>
-      <scope>test</scope>
-    </dependency>
+    <developers>
+        <developer>
+            <email>f2prateek@gmail.com</email>
+            <name>Prateek Srivastava</name>
+            <url>https://github.com/f2prateek</url>
+            <id>f2prateek</id>
+        </developer>
+    </developers>
 
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <modules>
+        <module>TravisRobotium</module>
+        <module>TestTravisRobotium</module>
+    </modules>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-        <artifactId>android-maven-plugin</artifactId>
-        <version>3.1.1</version>
-        <configuration>
-          <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
-          <assetsDirectory>${project.basedir}/assets</assetsDirectory>
-          <resourceDirectory>${project.basedir}/res</resourceDirectory>
-          <nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory>
-          <sdk>
-            <platform>18</platform>
-          </sdk>
-          <undeployBeforeDeploy>true</undeployBeforeDeploy>
-        </configuration>
-        <extensions>true</extensions>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <android.version>4.1.1.4</android.version>
+    </properties>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>3.4.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <sdk>
+                            <platform>16</platform>
+                        </sdk>
+                        <!--<undeployBeforeDeploy>true</undeployBeforeDeploy>-->
+                        <proguard>
+                            <skip>true</skip>
+                            <config>../proguard.cfg</config>
+                        </proguard>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.9.1</version>
+                    <configuration>
+                        <failsOnError>true</failsOnError>
+                        <configLocation>../checkstyle.xml</configLocation>
+                        <consoleOutput>true</consoleOutput>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>checkstyle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
