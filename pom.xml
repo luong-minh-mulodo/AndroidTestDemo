@@ -12,8 +12,8 @@
 
     <parent>
         <version>1.0</version>
-        <groupId>com.cmput301.recipebot</groupId>
-        <artifactId>com-cmput301-recipebot-parent</artifactId>
+        <groupId>com.example.aaa</groupId>
+        <artifactId>com.example.aaa</artifactId>
     </parent>
 
     <properties>
